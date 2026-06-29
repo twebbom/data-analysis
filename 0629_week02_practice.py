@@ -313,14 +313,14 @@ for i in range(0,5):
 # ================================================
 # -------------------------------------------------------
 
-region = set(regions)
+region =', '.join(set(regions))
 print("========== 오늘의 쇼핑몰 마감 보고서 ==========")
 print(f'총 주문 건수   : {len(order_ids)}건')
 print(f'총 매출 금액   : {sum(totals):,}원')
 print(f'평균 주문금액  : {sum(totals)/len(order_ids):,}원')
 print(f'최고 주문금액  : {max(totals):,}원')
 print(f'최저 주문금액  : {min(totals):,}원')
-print(f'주문 지역      : {set(regions)
+print(f'주문 지역      : {region} (총 {len(set(regions))}곳)')
 
 
 # ===========================================================
