@@ -151,6 +151,18 @@ max_by_region = dfs.groupby('지역')['교육비'].max().sort_values(ascending=F
 print("\n지역별 교육비 최댓값 (내림차순):")
 print(max_by_region)
 
+#%% 7주차 추가 내용
+===========================================================================
+max_by_region = dfs.groupby('지역')['교육비'].max().reset_index().sort_values(by='교육비', ascending=False)
+print(max_by_region)
+
+## 참고
+pd.options.display.float_format = '{:,.0f}'.format
+print(max_by_region)
+# reset_option을 하지 않으면 계속 유지됨
+pd.reset_option('display.float_format')
+==========================================================================
+
 # TODO Q4 : 서울 사립대만 필터링해서 교육비 막대 그래프를 그리세요.
 seoul_prv = dfs[(dfs['지역'] == '서울') & (dfs['설립구분'] == '사립')]
 
