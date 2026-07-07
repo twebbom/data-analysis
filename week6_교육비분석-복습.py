@@ -56,6 +56,16 @@ dfs = pd.concat([df1, df2], axis=0)
 dfs.groupby('지역')['교육비'].mean()
 
 #%%
+max_by_region = dfs.groupby('지역')['교육비'].max().reset_index().sort_values(by='교육비', ascending=False)
+print(max_by_region)
+
+## 참고
+pd.options.display.float_format = '{:,.0f}'.format
+print(max_by_region)
+# reset_option을 하지 않으면 계속 유지됨
+pd.reset_option('display.float_format')
+
+#%%
 #seaborn을 이용하여 지역별 교육비 막대그래프를 구분은 설립구분으로 그린다.
 df_bar = dfs.groupby(['지역', '설립구분'])['교육비'].mean().reset_index()
 
@@ -77,5 +87,4 @@ plt.title('교육비 상위 10개 대학')
 plt.xticks(rotation=45, ha='right')
 plt.tight_layout()
 plt.show()
-
 
